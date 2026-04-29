@@ -25,7 +25,17 @@ const userSchema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (_doc, ret) => {
+        ret.id = ret._id.toString();
+        delete ret._id;
+        delete ret.__v;
+        delete ret.senha;
+        return ret;
+      }
+    }
   }
 );
 
@@ -48,5 +58,9 @@ userSchema.pre('findOneAndUpdate', async function hashPasswordOnUpdate(next) {
 
   next();
 });
+
+userSchema.methods.comparePassword = function comparePassword(candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.senha);
+};
 
 module.exports = mongoose.model('User', userSchema);

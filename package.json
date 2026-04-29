@@ -1,7 +1,7 @@
 {
-  "name": "codexa-user-api",
+  "name": "codexa-whatsapp-linker-api",
   "version": "1.0.0",
-  "description": "API simples de CRUD de usuários com Node.js, Express e MongoDB.",
+  "description": "API REST do WhatsApp Linker com Node.js, Express e MongoDB.",
   "main": "src/server.js",
   "type": "commonjs",
   "scripts": {
@@ -14,7 +14,8 @@
     "mongodb",
     "mongoose",
     "api",
-    "crud"
+    "whatsapp-linker",
+    "codexa"
   ],
   "author": "Codexa",
   "license": "MIT",

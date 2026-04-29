@@ -13,4 +13,7 @@ async function startServer() {
   });
 }
 
-startServer();
+startServer().catch((error) => {
+  console.error('Não foi possível iniciar o servidor:', error.message);
+  process.exit(1);
+});
